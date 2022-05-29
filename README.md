@@ -11,5 +11,4 @@ Follow these steps to get started!
 2. Retrieve the key and the corresponding endpoint from the Microsoft Azure Face API.
 3. Set up the MongoDB database and retrieve cthe URI to connect it in the application.
 4. Retrieve the Client ID and Client Secret ID from the Spotify API website.
- ```
 5. Once the database is connected, run the commands- ``nodemon server`` and ``npm start``
