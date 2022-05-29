@@ -12,7 +12,6 @@ import Homepage from "./components/homepage.component.js"
 import "./components/css/App.css";
 
 function App() {
-  console.log("runninnggggg gmememe");
   return (
     <Router>
       <div className="App">
