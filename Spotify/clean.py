@@ -10,15 +10,13 @@ from sys import exit
 
 
 URI = "mongodb+srv://bhagya-admin:mongo123@cluster0.ixcjw.mongodb.net/test?retryWrites=true&w=majority"
-ID = ""
-SECRET = ""
+ID = "c4b60f9ef6324e02a95b62aa02c60d64"
+SECRET = "1680c141a813462db30b6f86d8881822"
 
-# Connect to MongoDB database
 my_client = pymongo.MongoClient(URI)
 my_db = my_client['spotifai']
 my_col = my_db['playlists']
 
-# Connect to Spotify API
 client_id = ID
 client_secret = SECRET
 client_credentials_manager = SpotifyClientCredentials(client_id, client_secret)
@@ -27,23 +25,19 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 input_id = input('Enter ID: ').strip()
 
-# Clean entire database if input is 'all'
 if input_id == 'all':
     for playlists in my_col.find():
         entry_id = playlists['_id']
         if playlists['cleaned'] == True:
             print(f'{entry_id} already cleaned')
             continue
-        # Get playlist ID from playlist link and entry_ID from object ID
         link = playlists['link']
         id = link[34:56]
 
-        # Get track ID for each track in playlist
         tracks = sp.playlist_tracks(id, fields='items(track(id))', limit=50)
         track_list = tracks['items']
         track_scores = 0
 
-        # Calculate new happiness index based on danceability and energy
         for track in track_list:
             id = track['track']['id']
             features = sp.audio_features(tracks=[id])
@@ -67,9 +61,7 @@ if input_id == 'all':
         my_col.update_one({'_id': ObjectId(str(entry_id))}, {'$set': {'cleaned': True}})
         print(f'Happiness index for {entry_id} set to {average}')
 
-# Clean entry with specified ID
 else:
-    # Convert items to list and iterate
     playlists = my_col.find_one({'_id': ObjectId(str(input_id))})
     if playlists['cleaned'] == True:
         print(f'{input_id} already cleaned')
@@ -78,12 +70,10 @@ else:
     link = playlists['link']
     id = link[34:56]
 
-    # Get track ID for each track in playlist
     tracks = sp.playlist_tracks(id, fields='items(track(id))', limit=50)
     track_list = tracks['items']
     track_scores = 0
 
-    # Calculate new happiness index based on danceability and energy
     for track in track_list:
         id = track['track']['id']
         features = sp.audio_features(tracks=[id])
@@ -96,7 +86,6 @@ else:
             score *= 1.3
         track_scores += score
 
-    # Average the rounded track values and fix bounds
     average = round(track_scores/len(track_list), 1)
     if average > 1:
         average = 1
