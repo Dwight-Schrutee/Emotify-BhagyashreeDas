@@ -1,15 +1,12 @@
 const router = require('express').Router();
 let Playlist = require('../models/playlist.model');
 
-// Get all items in database
 router.route('/').get((req, res) => {
-  console.log("bhagya is the besttttt");
   Playlist.find()
     .then(playlists => res.json(playlists))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// Create new entry in databse with link, emotion, and age
 router.route('/add').post((req, res) => {
   const link = req.body.link;
   const emotion = Number(req.body.emotion);
@@ -27,7 +24,6 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// Get specific item from database by score
 router.route('/:score').get((req, res) => {
   Playlist.find({emotion: req.params.score})
     .then(
@@ -35,7 +31,6 @@ router.route('/:score').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// Get specific item from database by score if under 18
 router.route('/clean/:score').get((req, res) => {
   Playlist.find({emotion: req.params.score, clean: True})
     .then(
@@ -43,14 +38,12 @@ router.route('/clean/:score').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// Delete specific item from database by id
 router.route('/:id').delete((req, res) => {
   Playlist.findByIdAndDelete(req.params.id)
     .then(playlists => res.json(playlists))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// Update specific item in database by id
 router.route('/update/:id').post((req, res) => {
   Playlist.findById(req.params.id)
     .then(playlist => {
