@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.App {
+ background-color: #12071F;
+ color: #BAD8F7;
+  text-align: center;
+  min-height: 100%;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.form-group {
+  text-align: left;
+  width: 1000px;
+  align-items: center;
+}
+
+.form-control {
+  text-align: left;
+}
+
+.table {
+  background-color: #BAD8F7;
+  text-align: left;
+}
+
+.heading{
+  padding: 20px;
+  padding-top: 80px;
+}
+
+.home{
+  padding-bottom: 100px;
+}
+
+.elements{
+  text-align:right;
+  padding-left: 500px;
+  padding-top: 70px;
+  font-size: 23px;
+}
+
+.sub-heading{
+  font-size: 60px;
+}
+
+.motto{
+  padding-bottom: 40px;
+  font-size: 20px;
+}
+
+.Body {
+  background-color: #12071F;
+  width: 100vw;
+  text-align: center;
+}
+
+.inside {
+  margin: auto;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #BAD8F7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navbar{
+  background-color: #BAD8F7;
+}
+
+.footer{
+  background-color: #BAD8F7;
+  color: #12071F;
+  height: 50px;
+  width: 1000px auto;
+  align-items: center;
+}
+
+.nav-link{
+  color: #12071F;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+
+}
+
+.imglogo{
+  padding-left: 900px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.main-wrapper {
+  min-height: 100%;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
