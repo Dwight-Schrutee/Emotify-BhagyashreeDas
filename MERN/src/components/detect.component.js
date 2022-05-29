@@ -17,10 +17,8 @@ export default class Home extends Component {
   submitForm(e, url) {
     var that = this;
     const axios = require('axios').default;
-    // Add a valid subscription key and endpoint to your environment variables.
-    let subscriptionKey = "b2cf0902bf004b89b2a5096c2df5e0e3"
-    let endpoint = 'https://spotifai.cognitiveservices.azure.com/face/v1.0/detect'
-    // Optionally, replace with your own image URL (for example a .jpg or .png URL).
+    let subscriptionKey = "ea65a2616e5f48cfb726dadf6650de69"
+    let endpoint = 'https://demofaceapiinstance2901.cognitiveservices.azure.com//face/v1.0/detect'
     let imageUrl = url.toString()
     let resultJSON = {
       "age": 0,
